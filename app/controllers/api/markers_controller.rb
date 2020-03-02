@@ -7,13 +7,13 @@ class Api::MarkersController < ApplicationController
 
   def create
     @marker = Marker.new(
-      user_id: 1,
+      user_id: current_user.id,
       address: params[:address],
       zip_code: params[:zip_code],
       description: params[:description],
       status: params[:status]
       )
-    @marker.save
+    @marker.save!
     render "show.json.jb"
   end
 

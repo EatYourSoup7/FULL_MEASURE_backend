@@ -1,5 +1,5 @@
 class Marker < ApplicationRecord
-  # belongs_to :user
+  belongs_to :user
 
   validates :status, presence: true
   validates :address, presence: true
