@@ -5,5 +5,9 @@ Rails.application.routes.draw do
     get "/markers/:id" => 'markers#show'
     patch "/markers/:id" => 'markers#update'
     delete "/markers/:id" => 'markers#destroy'
+
+    post "/users" => 'users#create'
+
+    post "/sessions" => 'sessions#create'
   end
 end
