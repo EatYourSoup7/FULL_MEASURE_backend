@@ -13,6 +13,8 @@ class Api::MarkersController < ApplicationController
       description: params[:description],
       status: params[:status]
       )
+    @marker.define_lng_lat
+    @marker.create_map
     @marker.save!
     render "show.json.jb"
   end
@@ -29,6 +31,8 @@ class Api::MarkersController < ApplicationController
     @marker.zip_code = params[:zip_code] || @marker.zip_code
     @marker.description = params[:description] || @marker.description
     @marker.status = params[:status] || @marker.status
+    @marker.define_lng_lat
+    @marker.create_map
     @marker.save
     render "show.json.jb"
   end
