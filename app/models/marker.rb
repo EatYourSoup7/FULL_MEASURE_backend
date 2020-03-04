@@ -17,7 +17,7 @@ class Marker < ApplicationRecord
   end
 
   def create_map
-    self.map = "https://maps.googleapis.com/maps/api/staticmap?center=#{self.address}&size=300x300&zoom=17&markers=size:medium|color:brown|label:P|#{self.lat},#{self.lng}&key=#{placeholder_for_gmaps_api_key}"
+    self.map = "https://maps.googleapis.com/maps/api/staticmap?center=#{self.address}&size=300x300&zoom=17&markers=size:medium|color:brown|label:P|#{self.lat},#{self.lng}&key=#{Rails.application.credentials.google[:api_key]}"
   end
 
 end
