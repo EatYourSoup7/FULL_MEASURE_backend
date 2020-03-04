@@ -1,9 +1,9 @@
 class Marker < ApplicationRecord
   # include 'geocode'
   belongs_to :user
-  has_many_attached :images, service: :s3
-  
-  geocoded_by :address
+  has_one_attached :image, service: :s3
+
+  geocoded_by :address, :latitude => :lat, :longitude => :lng
   after_validation :geocode
 
 

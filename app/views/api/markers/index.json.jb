@@ -1,11 +1,3 @@
 @markers.map do |marker|
-  {
-    id: marker.id,
-    user_id: marker.user_id,
-    address: marker.address,
-    zip_code: marker.zip_code,
-    description: marker.description,
-    status: marker.status,
-    created_at: marker.created_at
-  }
+  render partial: 'markers.json.jb', locals:{marker: marker}
 end

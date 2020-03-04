@@ -17,6 +17,7 @@ class Api::MarkersController < ApplicationController
     @marker.create_map
     @marker.save!
     @marker.images.attach(params[:images])
+
     render "show.json.jb"
 
   end
