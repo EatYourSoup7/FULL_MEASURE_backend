@@ -16,8 +16,12 @@ class Api::MarkersController < ApplicationController
     @marker.define_lng_lat
     @marker.create_map
     @marker.save!
+    @marker.images.attach(params[:images])
     render "show.json.jb"
+
   end
+
+
 
   def show
     @marker = Marker.find_by(id: params[:id])
