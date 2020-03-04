@@ -7,13 +7,15 @@ class Api::MarkersController < ApplicationController
 
   def create
     @marker = Marker.new(
-      user_id: 1,
+      user_id: current_user.id,
       address: params[:address],
       zip_code: params[:zip_code],
       description: params[:description],
       status: params[:status]
       )
-    @marker.save
+    @marker.define_lng_lat
+    @marker.create_map
+    @marker.save!
     render "show.json.jb"
   end
 
@@ -29,6 +31,8 @@ class Api::MarkersController < ApplicationController
     @marker.zip_code = params[:zip_code] || @marker.zip_code
     @marker.description = params[:description] || @marker.description
     @marker.status = params[:status] || @marker.status
+    @marker.define_lng_lat
+    @marker.create_map
     @marker.save
     render "show.json.jb"
   end
