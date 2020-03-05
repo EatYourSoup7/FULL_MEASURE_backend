@@ -36,6 +36,10 @@ class Api::MarkersController < ApplicationController
     @marker.zip_code = params[:zip_code] || @marker.zip_code
     @marker.description = params[:description] || @marker.description
     @marker.status = params[:status] || @marker.status
+    # @marker.image = params[:image] || @marker.image
+
+
+    # @marker.update_image
     @marker.define_lng_lat
     @marker.create_map
     @marker.save
