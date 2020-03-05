@@ -11,13 +11,13 @@ class Api::MarkersController < ApplicationController
       address: params[:address],
       zip_code: params[:zip_code],
       description: params[:description],
-      status: params[:status]
+      status: params[:status],
+      image: params[:image]
       )
+
     @marker.define_lng_lat
     @marker.create_map
-    @marker.save!
-    @marker.images.attach(params[:images])
-
+    @marker.save
     render "show.json.jb"
 
   end
